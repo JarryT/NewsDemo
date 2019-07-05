@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  NewsChannelViewController.swift
 //  ChinaNews
 //
-//  Created by 汤军 on 2019/7/4.
+//  Created by 汤军 on 2019/7/5.
 //  Copyright © 2019 汤军. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: BaseTableViewController {
+class NewsChannelViewController: BaseTableViewController {
 
     var newsChannelManager: NewsChannelManager?
 
@@ -41,7 +41,4 @@ class ViewController: BaseTableViewController {
         cell.detailTextLabel?.text = channel.channelId
         return cell
     }
-
-    
 }
-

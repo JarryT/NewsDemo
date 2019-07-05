@@ -22,22 +22,22 @@ class NewsListImageViewCell: NewsListCell {
         contentView.addSubview(iconView)
 
         iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(padding)
+            make.left.equalToSuperview().offset(padding)
+            make.right.equalToSuperview().offset(-padding)
             make.height.equalTo(200)
         }
 
         sourceLabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalTo(iconView.snp.bottom).offset(padding)
+            make.right.equalToSuperview().offset(-padding)
+            make.bottom.equalToSuperview().offset(-padding)
         }
 
         dateLabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalTo(iconView.snp.bottom).offset(padding)
+            make.left.equalToSuperview().offset(padding)
+            make.bottom.equalToSuperview().offset(-padding)
         }
     }
 

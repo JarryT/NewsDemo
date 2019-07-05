@@ -36,13 +36,7 @@ class NewsListCell: UITableViewCell {
         label.textColor = UIColor.lightGray
         return label
     }()
-
-    lazy var iconView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        return imageView
-    }()
-
+    
     lazy var sourceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
@@ -66,7 +60,6 @@ class NewsListCell: UITableViewCell {
 
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(iconView)
         contentView.addSubview(sourceLabel)
         contentView.addSubview(dateLabel)
 
@@ -82,66 +75,26 @@ class NewsListCell: UITableViewCell {
             make.right.equalToSuperview().offset(-10)
         }
 
-        iconView.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)
-            make.right.equalToSuperview().offset(-10)
-            make.height.equalTo(200)
-        }
-
         sourceLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(10)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-10)
         }
 
         dateLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(10)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
         }
     }
 
-    var newsItem: NewsItem? {
 
-        willSet {
-            if let item = newsItem {
-                iconView.isHidden = !item.havePic
-                if item.havePic {
-                    let image = item.images.first!
-                    iconView.kf.setImage(with: URL.init(string: image.url))
-                    imageView?.snp.remakeConstraints({ (make) in
-                        make.height.equalTo(250)
-                    })
-                } else {
-                    imageView?.snp.remakeConstraints({ (make) in
-                        make.height.equalTo(0)
-                    })
-                }
-            }
-            setNeedsLayout()
-        }
-
-        didSet {
-            if let item = newsItem {
-                titleLabel.text = item.title
-                let text = item.description.count > 0 ? item.description : item.content
-                descriptionLabel.text = text
-                sourceLabel.text = item.source
-                dateLabel.text = item.pubDate
-                if item.havePic {
-                    let image = item.images.first!
-                    iconView.kf.setImage(with: URL.init(string: image.url))
-                    imageView?.snp.remakeConstraints({ (make) in
-                        make.height.equalTo(200)
-                    })
-                } else {
-                    imageView?.snp.remakeConstraints({ (make) in
-                        make.height.equalTo(0)
-                    })
-                }
-            }
-        }
+    func updateWith(_ item: NewsItem) {
+        titleLabel.text = item.title
+        let text = item.description.count > 0 ? item.description : item.content
+        descriptionLabel.text = text
+        sourceLabel.text = item.source
+        dateLabel.text = item.pubDate
     }
 
     required init?(coder aDecoder: NSCoder) {

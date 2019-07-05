@@ -31,6 +31,7 @@ class NewsListViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 66
         tableView.rowHeight = UITableView.automaticDimension
         registCell(NewsListCell.self, reuseIdentifier: NewsListCell.Identifiter)
+        registCell(NewsListImageViewCell.self, reuseIdentifier: NewsListImageViewCell.Identifiter)
         
         ShareNetworkManager.send(request) { [weak self](newsListManager, error) in
             self?.newsListManager = newsListManager
@@ -48,9 +49,14 @@ class NewsListViewController: BaseTableViewController {
     }
 
     override func cellForRowAt(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsListCell.Identifiter) as! NewsListCell
         let item = newsListManager!.contentlist[indexPath.row]
-        cell.newsItem = item
+        var cell: NewsListCell
+        if item.havePic {
+            cell = tableView.dequeueReusableCell(withIdentifier: NewsListImageViewCell.Identifiter) as! NewsListImageViewCell
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: NewsListCell.Identifiter) as! NewsListCell
+        }
+        cell.updateWith(item)
         return cell
     }
     

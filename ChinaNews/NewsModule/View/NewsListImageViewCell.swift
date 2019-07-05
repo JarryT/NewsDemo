@@ -29,15 +29,15 @@ class NewsListImageViewCell: NewsListCell {
         }
 
         sourceLabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(padding)
+            make.top.equalTo(iconView.snp.bottom).offset(space)
             make.right.equalToSuperview().offset(-padding)
-            make.bottom.equalToSuperview().offset(-padding)
+            make.bottom.equalToSuperview().offset(-space)
         }
 
         dateLabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(iconView.snp.bottom).offset(padding)
+            make.top.equalTo(iconView.snp.bottom).offset(space)
             make.left.equalToSuperview().offset(padding)
-            make.bottom.equalToSuperview().offset(-padding)
+            make.bottom.equalToSuperview().offset(-space)
         }
     }
 
@@ -52,6 +52,5 @@ class NewsListImageViewCell: NewsListCell {
             iconView.kf.setImage(with: URL.init(string: image.url))
         }
     }
-    
 
 }

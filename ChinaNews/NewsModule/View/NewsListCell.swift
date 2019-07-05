@@ -88,13 +88,13 @@ class NewsListCell: UITableViewCell {
         }
 
         dateLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(padding)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(space)
             make.left.equalToSuperview().offset(padding)
-            make.bottom.equalToSuperview().offset(-padding)
+            make.bottom.equalToSuperview().offset(-space)
         }
 
         sourceLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(padding)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(space)
             make.right.equalToSuperview().offset(-padding)
             make.bottom.equalToSuperview().offset(-space)
         }

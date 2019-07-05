@@ -27,6 +27,7 @@
 		DFE9A02922CEEE34007D46C4 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */; };
 		DFE9A02D22CF2238007D46C4 /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9A02B22CF2238007D46C4 /* NewsListCell.swift */; };
 		DFEDD4EB22CF69BD008ABC15 /* NewsListImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEDD4EA22CF69BD008ABC15 /* NewsListImageViewCell.swift */; };
+		DFEDD4ED22CF7093008ABC15 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEDD4EC22CF7093008ABC15 /* NewsDetailViewController.swift */; };
 		E49E9A03980540907B9A61CD /* Pods_ChinaNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC5B79C9D1269172F049375 /* Pods_ChinaNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		DFE9A02B22CF2238007D46C4 /* NewsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
 		DFEDD4EA22CF69BD008ABC15 /* NewsListImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListImageViewCell.swift; sourceTree = "<group>"; };
+		DFEDD4EC22CF7093008ABC15 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				DFE9A02A22CF221C007D46C4 /* View */,
 				DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */,
 				DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */,
+				DFEDD4EC22CF7093008ABC15 /* NewsDetailViewController.swift */,
 			);
 			path = NewsModule;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				DFE9A02D22CF2238007D46C4 /* NewsListCell.swift in Sources */,
 				DFE9A02922CEEE34007D46C4 /* NewsListViewController.swift in Sources */,
 				DF34684D22CDE0B400225143 /* NetworkConfiguration.swift in Sources */,
+				DFEDD4ED22CF7093008ABC15 /* NewsDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,12 @@
+.DS_Store
+.Trashes
+*.swp
+
+#*.pbxuser
+*.perspective
+*.perspectivev3
+xcuserdata/
+
+Pods
+
+Build

@@ -16,8 +16,6 @@
 		DF34684D22CDE0B400225143 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34684A22CDE0B400225143 /* NetworkConfiguration.swift */; };
 		DF34685422CDE46800225143 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34685322CDE46800225143 /* News.swift */; };
 		DF34685922CDE4D800225143 /* NewsParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34685822CDE4D800225143 /* NewsParameter.swift */; };
-		DF34685D22CE1A5300225143 /* NewsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34685C22CE1A5300225143 /* NewsListRequest.swift */; };
-		DF34685F22CE1A8100225143 /* NewsChannelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34685E22CE1A8100225143 /* NewsChannelRequest.swift */; };
 		DF34686222CE270000225143 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34686022CE270000225143 /* String+Extension.swift */; };
 		DF34686322CE270000225143 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34686122CE270000225143 /* Data+Extension.swift */; };
 		DF34686A22CEE66400225143 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34686522CEE66400225143 /* BaseViewController.swift */; };
@@ -26,6 +24,8 @@
 		DF34686D22CEE66400225143 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34686822CEE66400225143 /* TabBarViewController.swift */; };
 		DF34686E22CEE66400225143 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF34686922CEE66400225143 /* NavigationController.swift */; };
 		DFE9A02522CEECFA007D46C4 /* NewsChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */; };
+		DFE9A02922CEEE34007D46C4 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */; };
+		DFE9A02D22CF2238007D46C4 /* NewsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE9A02B22CF2238007D46C4 /* NewsListCell.swift */; };
 		E49E9A03980540907B9A61CD /* Pods_ChinaNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC5B79C9D1269172F049375 /* Pods_ChinaNews.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,8 +44,6 @@
 		DF34684A22CDE0B400225143 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		DF34685322CDE46800225143 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		DF34685822CDE4D800225143 /* NewsParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsParameter.swift; sourceTree = "<group>"; };
-		DF34685C22CE1A5300225143 /* NewsListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListRequest.swift; sourceTree = "<group>"; };
-		DF34685E22CE1A8100225143 /* NewsChannelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsChannelRequest.swift; sourceTree = "<group>"; };
 		DF34686022CE270000225143 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		DF34686122CE270000225143 /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		DF34686522CEE66400225143 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		DF34686822CEE66400225143 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DF34686922CEE66400225143 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsChannelViewController.swift; sourceTree = "<group>"; };
+		DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		DFE9A02B22CF2238007D46C4 /* NewsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,13 +106,12 @@
 		DF34683022CDE07A00225143 /* ChinaNews */ = {
 			isa = PBXGroup;
 			children = (
-				DFE9A02722CEEDAF007D46C4 /* Extension */,
-				DFE9A02622CEED91007D46C4 /* Modules */,
 				DF34686422CEE66400225143 /* Base */,
-				DF34685A22CE1A0700225143 /* Request */,
 				DF34684E22CDE25F00225143 /* Data */,
 				DF34684722CDE0B400225143 /* NetworkManager */,
 				DF34684322CDE0A800225143 /* Libs */,
+				DFE9A02722CEEDAF007D46C4 /* Extension */,
+				DFE9A02622CEED91007D46C4 /* NewsModule */,
 				DF34683122CDE07A00225143 /* AppDelegate.swift */,
 				DF34683822CDE07C00225143 /* Assets.xcassets */,
 				DF34683A22CDE07C00225143 /* LaunchScreen.storyboard */,
@@ -180,23 +179,6 @@
 			path = response;
 			sourceTree = "<group>";
 		};
-		DF34685A22CE1A0700225143 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				DF34685B22CE1A1600225143 /* News */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		DF34685B22CE1A1600225143 /* News */ = {
-			isa = PBXGroup;
-			children = (
-				DF34685C22CE1A5300225143 /* NewsListRequest.swift */,
-				DF34685E22CE1A8100225143 /* NewsChannelRequest.swift */,
-			);
-			path = News;
-			sourceTree = "<group>";
-		};
 		DF34686422CEE66400225143 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,12 +191,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		DFE9A02622CEED91007D46C4 /* Modules */ = {
+		DFE9A02622CEED91007D46C4 /* NewsModule */ = {
 			isa = PBXGroup;
 			children = (
+				DFE9A02A22CF221C007D46C4 /* View */,
 				DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */,
+				DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */,
 			);
-			path = Modules;
+			path = NewsModule;
 			sourceTree = "<group>";
 		};
 		DFE9A02722CEEDAF007D46C4 /* Extension */ = {
@@ -224,6 +208,14 @@
 				DF34686022CE270000225143 /* String+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DFE9A02A22CF221C007D46C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DFE9A02B22CF2238007D46C4 /* NewsListCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,12 +317,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ChinaNews/Pods-ChinaNews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,13 +348,13 @@
 				DF34686E22CEE66400225143 /* NavigationController.swift in Sources */,
 				DF34685422CDE46800225143 /* News.swift in Sources */,
 				DF34686C22CEE66400225143 /* RootViewController.swift in Sources */,
-				DF34685D22CE1A5300225143 /* NewsListRequest.swift in Sources */,
 				DF34686322CE270000225143 /* Data+Extension.swift in Sources */,
 				DF34684622CDE0A800225143 /* SwiftyJSON.swift in Sources */,
 				DF34685922CDE4D800225143 /* NewsParameter.swift in Sources */,
 				DF34686B22CEE66400225143 /* BaseTableViewController.swift in Sources */,
 				DF34683222CDE07A00225143 /* AppDelegate.swift in Sources */,
-				DF34685F22CE1A8100225143 /* NewsChannelRequest.swift in Sources */,
+				DFE9A02D22CF2238007D46C4 /* NewsListCell.swift in Sources */,
+				DFE9A02922CEEE34007D46C4 /* NewsListViewController.swift in Sources */,
 				DF34684D22CDE0B400225143 /* NetworkConfiguration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

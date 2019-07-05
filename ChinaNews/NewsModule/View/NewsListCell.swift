@@ -7,18 +7,145 @@
 //
 
 import UIKit
+import Kingfisher
+
+extension UITableViewCell {
+    static var Identifiter: String {
+        get {
+            return self.description()
+        }
+    }
+}
 
 class NewsListCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.textColor = UIColor.black
+        return label
+    }()
+
+    lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.textColor = UIColor.lightGray
+        return label
+    }()
+
+    lazy var iconView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        return imageView
+    }()
+
+    lazy var sourceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.textColor = UIColor.black
+        return label
+    }()
+
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.textColor = UIColor.black
+        return label
+    }()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(iconView)
+        contentView.addSubview(sourceLabel)
+        contentView.addSubview(dateLabel)
+
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+
+        descriptionLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+        }
+
+        iconView.snp.makeConstraints { (make) in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.height.equalTo(200)
+        }
+
+        sourceLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(iconView.snp.bottom).offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
+
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(iconView.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    var newsItem: NewsItem? {
 
-        // Configure the view for the selected state
+        willSet {
+            if let item = newsItem {
+                iconView.isHidden = !item.havePic
+                if item.havePic {
+                    let image = item.images.first!
+                    iconView.kf.setImage(with: URL.init(string: image.url))
+                    imageView?.snp.remakeConstraints({ (make) in
+                        make.height.equalTo(250)
+                    })
+                } else {
+                    imageView?.snp.remakeConstraints({ (make) in
+                        make.height.equalTo(0)
+                    })
+                }
+            }
+            setNeedsLayout()
+        }
+
+        didSet {
+            if let item = newsItem {
+                titleLabel.text = item.title
+                let text = item.description.count > 0 ? item.description : item.content
+                descriptionLabel.text = text
+                sourceLabel.text = item.source
+                dateLabel.text = item.pubDate
+                if item.havePic {
+                    let image = item.images.first!
+                    iconView.kf.setImage(with: URL.init(string: image.url))
+                    imageView?.snp.remakeConstraints({ (make) in
+                        make.height.equalTo(200)
+                    })
+                } else {
+                    imageView?.snp.remakeConstraints({ (make) in
+                        make.height.equalTo(0)
+                    })
+                }
+            }
+        }
     }
-    
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }

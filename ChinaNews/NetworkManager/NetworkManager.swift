@@ -29,7 +29,9 @@ struct NetworkManager: NetworkClient {
         signString += "28003da34fcb4e5298fe649655f274c2"
         urlString += "showapi_sign=\(signString.hashed(.md5)!)"
         urlString = r.path + "?" + urlString
-        let url = URL(string: urlString)!
+
+        let encodeUrlString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string:encodeUrlString)!
         var request = URLRequest(url: url)
         request.httpMethod = r.method.rawValue
         let json = JSON.init(sortedParams)

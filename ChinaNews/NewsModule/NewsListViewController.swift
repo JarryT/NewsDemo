@@ -28,9 +28,9 @@ class NewsListViewController: BaseTableViewController {
         // Do any additional setup after loading the view.
         refreshRequestState()
 
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = 44
-        registCell(UITableViewCell.self, reuseIdentifier: "UITableViewCell")
+        tableView.estimatedRowHeight = 66
+        tableView.rowHeight = UITableView.automaticDimension
+        registCell(NewsListCell.self, reuseIdentifier: NewsListCell.Identifiter)
         
         ShareNetworkManager.send(request) { [weak self](newsListManager, error) in
             self?.newsListManager = newsListManager
@@ -48,15 +48,12 @@ class NewsListViewController: BaseTableViewController {
     }
 
     override func cellForRowAt(_ indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell") else {
-            return UITableViewCell()
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsListCell.Identifiter) as! NewsListCell
         let item = newsListManager!.contentlist[indexPath.row]
-        cell.textLabel?.text = item.title
-        cell.detailTextLabel?.text = item.source
+        cell.newsItem = item
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }

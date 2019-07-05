@@ -34,10 +34,9 @@ struct NewsListParameter {
     var title: String = ""
     var page: String = "1"
     var needContent: String = "1"
-    var needHtml: String = "1"
-    var needAllList: String = "1"
+    var needHtml: String = "0"
+    var needAllList: String = "0"
     var maxResult: String = "20"
-
     var body: [String: String] {
         get {
             return ["channelId":channelId,"channelName":channelName,"title":title,"page":page,"needContent":needContent,"needHtml":needHtml,"needAllList":needAllList,"maxResult":maxResult]

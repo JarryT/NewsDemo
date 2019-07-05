@@ -20,12 +20,21 @@ enum NetworkMethod: String {
 protocol NetworkRequest {
     var path: String { get }
     var method: NetworkMethod { get }
-    var parameter: [String: String] { get set }
+    var parameter: [String: String] { get set}
 
     associatedtype Response: NetworkParsable
 }
 
 extension NetworkRequest {
+
+    mutating func addParameter(_ parameter: [String: String]) {
+        for item in parameter {
+            if item.value.count > 0 {
+                self.parameter[item.key] = item.value
+            }
+        }
+    }
+
     var headers: [String: String] {
         return ["a":"aaa"]
     }

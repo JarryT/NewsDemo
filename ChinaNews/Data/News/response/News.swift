@@ -8,6 +8,22 @@
 
 import UIKit
 
+/// define request
+struct NewsListRequest: NetworkRequest {
+    var path: String = "http://route.showapi.com/109-35"
+    var method: NetworkMethod = .GET
+    var parameter: [String : String] = NewsSystemParameter().body
+    typealias Response = NewsItemListManager
+}
+
+struct NewsChannelRequest: NetworkRequest {
+    var path: String = "http://route.showapi.com/109-34"
+    var method: NetworkMethod = .GET
+    var parameter: [String : String] = NewsSystemParameter().body
+    typealias Response = NewsChannelManager
+}
+
+/// define data manager
 struct NewsChannelManager: NetworkParsable {
     var totalNum: Int = 0
     var channels: [NewsChannel] = [NewsChannel]()
@@ -32,11 +48,11 @@ struct NewsItemListManager: NetworkParsable {
     var contentlist: [NewsItem] = [NewsItem]()
 
     init(json: JSON) {
-        allNum = json["allNum"].int ?? 0
-        allPages = json["allPages"].int ?? 0
-        currentPage = json["allPages"].int ?? 0
-        maxResult = json["allPages"].int ?? 0
-        for news in json["contentlist"] {
+        allNum = json["allNum"].intValue
+        allPages = json["allPages"].intValue
+        currentPage = json["currentPage"].intValue
+        maxResult = json["maxResult"].intValue
+        for news in json["contentlist"].arrayValue {
             let newsJson = JSON.init(news)
             contentlist.append(NewsItem.init(json: newsJson))
         }
@@ -55,9 +71,10 @@ struct NewsItemListManager: NetworkParsable {
     }
 
     static func parse(data: JSON) -> NewsItemListManager? {
-        return NewsItemListManager.init(json: data)
+        return NewsItemListManager.init(json: data["pagebean"])
     }
 }
+
 
 struct NewsItem {
     var title: String = ""
@@ -69,33 +86,35 @@ struct NewsItem {
     var channelId: String = ""
     var channelName: String = ""
     var nid: String = ""
+    var havePic: Bool = false
     var images: [NewsImage] = [NewsImage]()
-
     init(json: JSON) {
-        title = json["title"].string ?? ""
-        content = json["content"].string ?? ""
-        link = json["link"].string ?? ""
-        pubDate = json["pubDate"].string ?? ""
-        source = json["source"].string ?? ""
-        description = json["desc"].string ?? ""
-        channelId = json["channelId"].string ?? ""
-        channelName = json["channelName"].string ?? ""
-        nid = json["nid"].string ?? ""
-
+        title = json["title"].stringValue
+        content = json["content"].stringValue
+        link = json["link"].stringValue
+        pubDate = json["pubDate"].stringValue
+        source = json["source"].stringValue
+        description = json["desc"].stringValue
+        channelId = json["channelId"].stringValue
+        channelName = json["channelName"].stringValue
+        nid = json["nid"].stringValue
+        havePic = (json["havePic"].intValue > 0)
+        print("havePic -- \(havePic)")
         images.removeAll()
-        for image in json["imageurls"] {
+        for image in json["imageurls"].arrayValue {
             let imageJson = JSON.init(image)
             images.append(NewsImage.init(json: imageJson))
         }
     }
 }
 
+/// define data 
 struct NewsChannel {
-    var channelId: String = ""
+    var id: String = ""
     var name: String = ""
     init(json: JSON) {
-        channelId = json["channelId"].string ?? ""
-        name = json["name"].string ?? ""
+        id = json["channelId"].stringValue
+        name = json["name"].stringValue
     }
 }
 
@@ -104,9 +123,9 @@ struct NewsImage {
     var height: Float = 0
     var wight: Float = 0
     init(json: JSON) {
-        url = json["url"].string ?? ""
-        height = json["height"].float ?? 0
-        wight = json["wight"].float ?? 0
+        url = json["url"].stringValue
+        height = json["height"].floatValue
+        wight = json["wight"].floatValue
     }
 }
 

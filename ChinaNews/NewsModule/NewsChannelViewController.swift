@@ -18,10 +18,7 @@ class NewsChannelViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = 44
         registCell(UITableViewCell.self, reuseIdentifier: "UITableViewCell")
-
-        var request = NewsChannelRequest()
-        let parameter = NewsSystemParameter().body
-        request.parameter = parameter
+        let request = NewsChannelRequest()
         ShareNetworkManager.send(request) { [weak self](newsChannelManager, error) in
             self?.newsChannelManager = newsChannelManager
             self?.tableView.reloadData()
@@ -38,7 +35,13 @@ class NewsChannelViewController: BaseTableViewController {
         }
         let channel = newsChannelManager!.channels[indexPath.row]
         cell.textLabel?.text = channel.name
-        cell.detailTextLabel?.text = channel.channelId
+        cell.detailTextLabel?.text = channel.id
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newsListViewController = NewsListViewController()
+        newsListViewController.channel = newsChannelManager?.channels[indexPath.row]
+        navigationController?.pushViewController(newsListViewController, animated: true)
     }
 }

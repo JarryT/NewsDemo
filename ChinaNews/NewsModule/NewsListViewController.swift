@@ -15,6 +15,7 @@ class NewsListViewController: BaseTableViewController {
             if let channel = channel {
                 requestParameter.channelName = channel.name
                 requestParameter.channelId = channel.id
+                navigationItem.title = channel.name
             }
         }
     }
@@ -61,6 +62,10 @@ class NewsListViewController: BaseTableViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let item = newsListManager!.contentlist[indexPath.row]
+        let web = WebViewController()
+        web.urlString = item.link
+        web.navigationItem.title = "详情"
+        navigationController?.pushViewController(web, animated: true)
     }
 }

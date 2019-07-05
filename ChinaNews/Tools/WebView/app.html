@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>WkwebView</title>
+    <style>
+        div{
+            margin-top: 50px;
+            margin-left: 50px;
+            width: 200px;
+            width: 50px;
+            font-size: 36px;
+        }
+        #test1{
+            width: 200px;
+            height: 50px;
+        }
+        #test2{
+           width: 200px;
+           height: 50px;
+        }
+        #test3{
+           width: 200px;
+           height: 50px;
+        }
+    </style>
+</head>
+  <body>
+      <div>
+          <button id="test1" onclick="onScan()">onScan</button>
+          <button id="test2" onclick="onLogin()">onLogin</button>
+          <button id="test3" onclick="onLoginOut()">onLoginOut</button>
+      </div>
+      
+  <script type="text/javascript">
+    
+      function test1(){
+          
+          /*
+            1.JS -> APP 必传参数handerName，APP会为每一个方法调用定制一个handerName
+            2.APP -> JS ，在JS方法中，不需要回调APP时，需要回传日志打印告知APP端结果，此时handerName为“printHander”,
+              需要传递printName时，APP会为每一个待回调事件定制一个printName
+          */
+          let formatter = {value:"valueString",//打印信息
+                           keyValues:{key1:"value1",key2:"value2"},//参数字典
+                           handerName:"handerName",//方法hander
+                           printName:"printName"//打印printHander、
+          }
+          window.webkit.messageHandlers.IOS.postMessage(formatter);
+    }
+
+
+  //JS -》 APP
+  function onScan(){
+<!--      alert(window.webkit)-->
+
+      localStorage.setItem('userInfo', "JSON.stringify(res)")
+      localStorage.setItem('loginStatus', "true")
+
+      window.webkit.messageHandlers.IOS.postMessage({handerName:"goScanHander"});
+      
+  }
+  function onLogin(){
+
+      localStorage.setItem('loginStatus', "123")
+      window.webkit.messageHandlers.onLogin.postMessage({handerName:"onLoginHander",keyValues:{userInfo:"name Jarry"}});
+  }
+  function onLoginOut(){
+
+      alert(localStorage.getItem("loginStatus"))
+      window.webkit.messageHandlers.onLoginOut.postMessage({handerName:"onLoginOutHander"});
+  }
+
+  //APP -》 JS
+  function goBack(){
+      window.webkit.messageHandlers.IOS.postMessage({value:"goBack click success",
+                                                          handerName:"printHander",
+                                                          printName:"goBackPrint"
+                                                          });
+  }
+  function onSubmit(){
+      window.webkit.messageHandlers.IOS.postMessage({value:"onSubmit click success",
+                                                            handerName:"printHander",
+                                                            printName:"onSubmitPrint"
+                                                            });
+  }
+  function onScanResult(code){
+      window.webkit.messageHandlers.IOS.postMessage({value:"code is " + code,
+                                                            handerName:"printHander",
+                                                            printName:"onScanResultPrint"
+                                                            });
+  }
+  function test(A,B,C){
+      window.webkit.messageHandlers.IOS.postMessage("回调: " + A + B + C);
+  }
+
+
+  </script>
+ </body>
+</html>

@@ -15,6 +15,9 @@ class NewsChannelViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        navigationItem.title = "China News"
+
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = 44
         registCell(UITableViewCell.self, reuseIdentifier: "UITableViewCell")
@@ -33,6 +36,7 @@ class NewsChannelViewController: BaseTableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell") else {
             return UITableViewCell()
         }
+        cell.selectionStyle = .none
         let channel = newsChannelManager!.channels[indexPath.row]
         cell.textLabel?.text = channel.name
         cell.detailTextLabel?.text = channel.id

@@ -15,10 +15,6 @@ func CurrentNewTimestamp() -> String {
     return timeFomatter.string(from: date)
 }
 
-func sortedParamers(_ body: [String: String]) -> String{
-    return ""
-}
-
 struct NewsSystemParameter {
     var body: [String: String] {
         get {

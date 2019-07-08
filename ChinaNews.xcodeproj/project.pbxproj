@@ -122,10 +122,9 @@
 			children = (
 				DFEDD4EE22CF7127008ABC15 /* Tools */,
 				DF34686422CEE66400225143 /* Base */,
-				DF34684E22CDE25F00225143 /* Data */,
 				DF34684322CDE0A800225143 /* Libs */,
 				DFE9A02722CEEDAF007D46C4 /* Extension */,
-				DFE9A02622CEED91007D46C4 /* NewsModule */,
+				DFE9A02622CEED91007D46C4 /* Module */,
 				DF34683122CDE07A00225143 /* AppDelegate.swift */,
 				DF34683822CDE07C00225143 /* Assets.xcassets */,
 				DF34683A22CDE07C00225143 /* LaunchScreen.storyboard */,
@@ -160,12 +159,12 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		DF34684E22CDE25F00225143 /* Data */ = {
+		DF34684E22CDE25F00225143 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				DF34685522CDE4A600225143 /* News */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DF34685522CDE4A600225143 /* News */ = {
@@ -205,17 +204,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		DFE9A02622CEED91007D46C4 /* NewsModule */ = {
+		DFE9A02622CEED91007D46C4 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				DFE9A02A22CF221C007D46C4 /* View */,
-				DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */,
-				DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */,
-				DFEDD4F622D030E8008ABC15 /* NewsCategoryViewController.swift */,
-				DFEDD4F822D03A60008ABC15 /* NewsSearchViewController.swift */,
-				DFEDD4F922D03A60008ABC15 /* NewsSearchViewController.xib */,
+				DFF115BB22D4087100786A22 /* News */,
 			);
-			path = NewsModule;
+			path = Module;
 			sourceTree = "<group>";
 		};
 		DFE9A02722CEEDAF007D46C4 /* Extension */ = {
@@ -253,6 +247,28 @@
 				DFEDD4F222CF7136008ABC15 /* app.html */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		DFF115BA22D4086000786A22 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFE9A02422CEECFA007D46C4 /* NewsChannelViewController.swift */,
+				DFE9A02822CEEE34007D46C4 /* NewsListViewController.swift */,
+				DFEDD4F622D030E8008ABC15 /* NewsCategoryViewController.swift */,
+				DFEDD4F822D03A60008ABC15 /* NewsSearchViewController.swift */,
+				DFEDD4F922D03A60008ABC15 /* NewsSearchViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DFF115BB22D4087100786A22 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				DFF115BA22D4086000786A22 /* Controllers */,
+				DF34684E22CDE25F00225143 /* Model */,
+				DFE9A02A22CF221C007D46C4 /* View */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -10,11 +10,11 @@ import UIKit
 
 class RootViewController: UIViewController {
 
-    var containerController: NavigationController?
+    var containerController: TabBarViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerController = NavigationController(rootViewController: NewsChannelViewController())
+        containerController = TabBarViewController()
         if let container = containerController {
             addChild(container)
             view.addSubview(container.view)
